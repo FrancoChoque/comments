@@ -16,7 +16,12 @@ const commentsSlice = createSlice({
     },
     error: null,
   },
-  reducers: {},
+  reducers: {
+    sendComment(state, action) {
+      const comments = [...state.data, action.payload];
+      state.data = comments;
+    },
+  },
   extraReducers: {
     [fetchComments.pending]: state => {
       state.loading.fetchComments = true;
@@ -31,6 +36,8 @@ const commentsSlice = createSlice({
     },
   },
 });
+
+export const { sendComment } = commentsSlice.actions;
 
 const { reducer } = commentsSlice;
 

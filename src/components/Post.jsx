@@ -6,25 +6,13 @@ import styled from 'styled-components';
 import { StyledRow } from 'styles';
 import { _getComments } from 'utils/selectors';
 import CommentCard from './CommentCard';
+import ReplyBox from './ReplyBox';
 
 const StyledContainer = styled.div`
   margin: 10px;
 `;
 
 const StyledItem = styled.li``;
-
-const ReplyBox = ({ id }) => {
-  const [reply, setReply] = useState('');
-  return (
-    <div style={{ position: 'absolute', right: 50, top: 100 }}>
-      <div style={{ display: 'flex', flexDirection: 'column' }}>
-        Reply to post {id}
-        <textarea style={{ minHeight: 100 }} />
-        <button>Send</button>
-      </div>
-    </div>
-  );
-};
 
 const Post = () => {
   const { id } = useParams();
@@ -37,6 +25,7 @@ const Post = () => {
     dispatch(fetchComments(id));
   }, [id]);
   console.log(comments);
+
   return (
     <StyledContainer>
       <StyledRow style={{ gap: 5, justifyContent: 'flex-start' }}>
@@ -52,7 +41,7 @@ const Post = () => {
           <CommentCard comment={comment} />
         ))}
       </ul>
-      {replyBox && <ReplyBox id={id} />}
+      {replyBox && <ReplyBox id={id} onClose={() => setReplyBox(false)} />}
     </StyledContainer>
   );
 };
