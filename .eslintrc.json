@@ -19,7 +19,9 @@
       "react/forbid-prop-types": "off",
       "react/react-in-jsx-scope": "off",
       "max-len": "off",
-      "react/jsx-props-no-spreading": "off"
+      "react/jsx-props-no-spreading": "off",
+      "no-param-reassign": "off",
+      "no-underscore-dangle": "off"
     }
   }
   

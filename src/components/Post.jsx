@@ -12,8 +12,6 @@ const StyledContainer = styled.div`
   margin: 10px;
 `;
 
-const StyledItem = styled.li``;
-
 const Post = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -24,7 +22,6 @@ const Post = () => {
   useEffect(() => {
     dispatch(fetchComments(id));
   }, [id]);
-  console.log(comments);
 
   return (
     <StyledContainer>
